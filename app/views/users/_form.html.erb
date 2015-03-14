@@ -1,0 +1,24 @@
+<%
+  title, method, url = if user.persisted?
+    ['Edit', 'patch', edit_user(user)]
+  else
+    ['Sign Up', 'post', users_url]
+  end
+%>
+
+<h1><%= title %></h1>
+
+<form action="<%= url %>" method="post">
+  <%= set_html_method(method) %>
+  <%= csrf_input %>
+
+  Username:<br>
+  <input type="text" name="users[username]" value="<%= user.username %>">
+
+  <br><br>
+  Password:<br>
+  <input type="password" name="users[password]">
+
+  <br><br>
+  <input type="submit" value="<%= title %>">
+</form>

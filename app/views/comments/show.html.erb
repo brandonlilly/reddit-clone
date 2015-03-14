@@ -1,0 +1,4 @@
+<h3><%= @comment.content %></h3>
+<%= render @comment.child_comments %>
+<br>
+<%= render 'form', comment: @child_comment %>

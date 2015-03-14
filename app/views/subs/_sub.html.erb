@@ -1,0 +1,5 @@
+<%= link_to "#{sub.title}", sub_url(sub) %>
+<br>
+<%= sub.description %>
+<%= button_to 'Edit', edit_sub_url(sub), method: :get if sub.creator == current_user %>
+<br><br>

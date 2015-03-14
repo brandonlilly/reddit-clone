@@ -1,0 +1,11 @@
+<h1><%= @sub.title %></h1>
+
+<%= @sub.description %>
+
+<% if @sub.creator == current_user %>
+<%= button_to "Edit", edit_sub_url(@sub), method: "get" %>
+<% end %>
+<br>
+<%= button_to "New Post", new_post_url, method: "get" %>
+<br>
+<%= render @sub.posts %>

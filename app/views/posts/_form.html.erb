@@ -1,0 +1,39 @@
+<%
+  title, method, url = if post.persisted?
+    ['Edit', 'patch', post_url(post)]
+  else
+    ['Create', 'post', posts_url(params[:id])]
+  end
+%>
+
+<form class="" action= "<%= url %>" method="post">
+  <%= set_html_method(method) %>
+  <%= csrf_input %>
+
+  Title:<br>
+  <input type="text" name="posts[title]" value="<%= post.title %>">
+
+  <br><br>
+  Url:<br>
+  <input type="text" name="posts[url]" value="<%= post.url %>">
+
+  <br><br>
+  Content:<br>
+  <textarea name="posts[content]" rows="8" cols="40"><%= post.content %></textarea>
+
+  <br><br>
+  Subs:<br>
+  <% Sub.all.each do |sub| %>
+    <label>
+      <input
+        type="checkbox"
+        name="posts[sub_ids][]"
+        value="<%= sub.id %>"
+        <%= 'checked' if post.sub_ids.include?(sub.id) %>>
+      <%= sub.title %>
+    </label><br>
+  <% end %>
+
+  <br><br>
+  <input type="submit" value="<%= title %>">
+</form>

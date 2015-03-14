@@ -1,0 +1,6 @@
+
+  <%= comment.content %><br>
+   - <%= link_to comment.author.username, comment.author %> <%= link_to "permalink", comment %>
+   <ul>
+     <%= render comment.child_comments %>
+   </ul>

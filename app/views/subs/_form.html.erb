@@ -1,0 +1,24 @@
+<%
+  title, method, url = if sub.persisted?
+    ['Edit', 'patch', sub_url(sub)]
+  else
+    ['Create', 'post', subs_url]
+  end
+%>
+
+<h1> <%= title %> Sub Reddit</h1>
+
+<form class="" action= "<%= url %>" method="post">
+  <%= set_html_method(method) %>
+  <%= csrf_input %>
+
+  Title:<br>
+  <input type="text" name="subs[title]" value="<%= sub.title %>">
+
+  <br><br>
+  Description:<br>
+  <textarea name="subs[description]" rows="8" cols="40"><%= sub.description %></textarea>
+
+  <br><br>
+  <input type="submit" value="<%= title %>">
+</form>

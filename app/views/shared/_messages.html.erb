@@ -1,0 +1,7 @@
+<% [:errors, :warnings].each do |type| %>
+  <% [ flash[type] ].flatten.each do |message| %>
+    <% if message %>
+      <div><%= message %></div>
+    <% end %>
+  <% end %>
+<% end %>
